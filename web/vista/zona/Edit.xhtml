@@ -11,18 +11,23 @@
         <p:dialog id="ZonaEditDlg" widgetVar="ZonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditZonaTitle}">
             <h:form id="ZonaEditForm">
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{zonaController.selected != null}">
-                        <p:outputLabel value="#{vista.EditZonaLabel_codZona}" for="codZona" />
-                        <p:inputText id="codZona" value="#{zonaController.selected.codZona}" title="#{vista.EditZonaTitle_codZona}" required="true" requiredMessage="#{vista.EditZonaRequiredMessage_codZona}"/>
-                        <p:outputLabel value="#{vista.EditZonaLabel_nomZona}" for="nomZona" />
-                        <p:inputText id="nomZona" value="#{zonaController.selected.nomZona}" title="#{vista.EditZonaTitle_nomZona}" />
-                        <p:outputLabel value="#{vista.EditZonaLabel_estZona}" for="estZona" />
-                        <p:inputText id="estZona" value="#{zonaController.selected.estZona}" title="#{vista.EditZonaTitle_estZona}" />
-                        <p:outputLabel value="#{vista.EditZonaLabel_cantMesaZona}" for="cantMesaZona" />
-                        <p:inputText id="cantMesaZona" value="#{zonaController.selected.cantMesaZona}" title="#{vista.EditZonaTitle_cantMesaZona}" />
+
+                        <p:outputLabel value="Zona" for="nomZona" />
+                        <p:inputText id="nomZona" maxlength="50" value="#{zonaController.selected.nomZona}" title="#{vista.CreateZonaTitle_nomZona}" required="true" requiredMessage="INGRESA ZONA">
+                            <p:keyFilter regEx="/[a-zñÑáéíóú ]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="CantidadMesa" for="cantMesaZona" />
+                        <p:inputText id="cantMesaZona" maxlength="3" value="#{zonaController.selected.cantMesaZona}" title="#{vista.CreateZonaTitle_cantMesaZona}" required="true" requiredMessage="INGRESA CANTIDAD" >
+                            <p:keyFilter regEx="/[0-9 ]/i"/>    
+                        </p:inputText>
                     </p:panelGrid>
+
                     <p:commandButton actionListener="#{zonaController.update}" value="#{vista.Save}" update="display,:ZonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ZonaEditDialog');"/>
                     <p:commandButton value="#{vista.Cancel}" onclick="ZonaEditDialog.hide()"/>
+
                 </h:panelGroup>
             </h:form>
         </p:dialog>

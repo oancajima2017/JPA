@@ -11,18 +11,25 @@
         <p:dialog id="ZonaViewDlg" widgetVar="ZonaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewZonaTitle}">
             <h:form id="ZonaViewForm">
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{zonaController.selected != null}">
-                        <h:outputText value="#{vista.ViewZonaLabel_codZona}"/>
+
+                        <h:outputText value="Orden"/>
                         <h:outputText value="#{zonaController.selected.codZona}" title="#{vista.ViewZonaTitle_codZona}"/>
-                        <h:outputText value="#{vista.ViewZonaLabel_nomZona}"/>
+
+                        <h:outputText value="Zona"/>
                         <h:outputText value="#{zonaController.selected.nomZona}" title="#{vista.ViewZonaTitle_nomZona}"/>
-                        <h:outputText value="#{vista.ViewZonaLabel_estZona}"/>
-                        <h:outputText value="#{zonaController.selected.estZona}" title="#{vista.ViewZonaTitle_estZona}"/>
-                        <h:outputText value="#{vista.ViewZonaLabel_cantMesaZona}"/>
+
+                        <h:outputText value="Mesas"/>
                         <h:outputText value="#{zonaController.selected.cantMesaZona}" title="#{vista.ViewZonaTitle_cantMesaZona}"/>
+
+                        <h:outputText value="Estado"/>
+                        <h:outputText value="#{zonaController.selected.estZona}" title="#{vista.ViewZonaTitle_estZona}"/>
+
                     </p:panelGrid>
                     <p:commandButton value="#{vista.Close}" onclick="ZonaViewDialog.hide()"/>
                 </h:panelGroup>
+
             </h:form>
         </p:dialog>
 

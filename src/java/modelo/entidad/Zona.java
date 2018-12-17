@@ -12,10 +12,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -43,13 +46,16 @@ public class Zona implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "COD_ZONA")
+    //    GENERAR CODIGO AUTOINCREMENTADO
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ZONA_SEQ")
+    @SequenceGenerator(sequenceName = "zona_seq", allocationSize = 1, name = "ZONA_SEQ")
     private BigDecimal codZona;
     @Size(max = 50)
     @Column(name = "NOM_ZONA")
     private String nomZona;
     @Size(max = 2)
     @Column(name = "EST_ZONA")
-    private String estZona;
+    private String estZona = "A";
     @Size(max = 10)
     @Column(name = "CANT_MESA_ZONA")
     private String cantMesaZona;
@@ -128,5 +134,5 @@ public class Zona implements Serializable {
     public String toString() {
         return "modelo.entidad.Zona[ codZona=" + codZona + " ]";
     }
-    
+
 }
