@@ -12,14 +12,17 @@
             <h:form id="ModalidadEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{modalidadController.selected != null}">
-                        <p:outputLabel value="#{vista.EditModalidadLabel_codMod}" for="codMod" />
-                        <p:inputText id="codMod" value="#{modalidadController.selected.codMod}" title="#{vista.EditModalidadTitle_codMod}" required="true" requiredMessage="#{vista.EditModalidadRequiredMessage_codMod}"/>
-                        <p:outputLabel value="#{vista.EditModalidadLabel_nomCarMod}" for="nomCarMod" />
-                        <p:inputText id="nomCarMod" value="#{modalidadController.selected.nomCarMod}" title="#{vista.EditModalidadTitle_nomCarMod}" />
-                        <p:outputLabel value="#{vista.EditModalidadLabel_monSuelMod}" for="monSuelMod" />
-                        <p:inputText id="monSuelMod" value="#{modalidadController.selected.monSuelMod}" title="#{vista.EditModalidadTitle_monSuelMod}" />
-                        <p:outputLabel value="#{vista.EditModalidadLabel_estMod}" for="estMod" />
-                        <p:inputText id="estMod" value="#{modalidadController.selected.estMod}" title="#{vista.EditModalidadTitle_estMod}" />
+
+                        <p:outputLabel value="Cargo" for="nomCarMod" />
+                        <p:inputText id="nomCarMod" maxlength="50" value="#{modalidadController.selected.nomCarMod}" title="#{vista.CreateModalidadTitle_nomCarMod}" required="true" requiredMessage="INGRESA CARGO">
+                            <p:keyFilter regEx="/[a-zñÑáéíóú ]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="Sueldo" for="monSuelMod" />
+                        <p:inputText id="monSuelMod" maxlength="6" value="#{modalidadController.selected.monSuelMod}" title="#{vista.CreateModalidadTitle_monSuelMod}" required="true" requiredMessage="INGRESA SUELDO" >
+                            <p:keyFilter regEx="/[0-9 ]/i"/>    
+                        </p:inputText>
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{modalidadController.update}" value="#{vista.Save}" update="display,:ModalidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ModalidadEditDialog');"/>
                     <p:commandButton value="#{vista.Cancel}" onclick="ModalidadEditDialog.hide()"/>

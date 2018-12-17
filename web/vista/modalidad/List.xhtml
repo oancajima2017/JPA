@@ -29,34 +29,39 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListModalidadTitle_codMod}"/>
+                                <h:outputText value="Orden"/>
                             </f:facet>
                             <h:outputText value="#{item.codMod}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListModalidadTitle_nomCarMod}"/>
+                                <h:outputText value="Cargo"/>
                             </f:facet>
                             <h:outputText value="#{item.nomCarMod}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListModalidadTitle_monSuelMod}"/>
+                                <h:outputText value="Sueldo"/>
                             </f:facet>
                             <h:outputText value="S/ #{item.monSuelMod}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListModalidadTitle_estMod}"/>
+                                <h:outputText value="Estado"/>
                             </f:facet>
                             <h:outputText value="#{item.estMod}"/>
                         </p:column>
+
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{vista.Create}" actionListener="#{modalidadController.prepareCreate}" update=":ModalidadCreateForm" oncomplete="PF('ModalidadCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{vista.View}" update=":ModalidadViewForm" oncomplete="PF('ModalidadViewDialog').show()" disabled="#{empty modalidadController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{vista.Edit}" update=":ModalidadEditForm" oncomplete="PF('ModalidadEditDialog').show()" disabled="#{empty modalidadController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{vista.Delete}" actionListener="#{modalidadController.destroy}" update=":growl,datalist" disabled="#{empty modalidadController.selected}"/>
                         </f:facet>
+
                     </p:dataTable>
                 </p:panel>
             </h:form>

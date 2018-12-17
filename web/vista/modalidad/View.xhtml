@@ -11,15 +11,21 @@
         <p:dialog id="ModalidadViewDlg" widgetVar="ModalidadViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewModalidadTitle}">
             <h:form id="ModalidadViewForm">
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{modalidadController.selected != null}">
-                        <h:outputText value="#{vista.ViewModalidadLabel_codMod}"/>
+
+                        <h:outputText value="Orden"/>
                         <h:outputText value="#{modalidadController.selected.codMod}" title="#{vista.ViewModalidadTitle_codMod}"/>
-                        <h:outputText value="#{vista.ViewModalidadLabel_nomCarMod}"/>
+
+                        <h:outputText value="Cargo"/>
                         <h:outputText value="#{modalidadController.selected.nomCarMod}" title="#{vista.ViewModalidadTitle_nomCarMod}"/>
-                        <h:outputText value="#{vista.ViewModalidadLabel_monSuelMod}"/>
+
+                        <h:outputText value="Sueldo"/>
                         <h:outputText value="#{modalidadController.selected.monSuelMod}" title="#{vista.ViewModalidadTitle_monSuelMod}"/>
-                        <h:outputText value="#{vista.ViewModalidadLabel_estMod}"/>
+
+                        <h:outputText value="Estado"/>
                         <h:outputText value="#{modalidadController.selected.estMod}" title="#{vista.ViewModalidadTitle_estMod}"/>
+
                     </p:panelGrid>
                     <p:commandButton value="#{vista.Close}" onclick="ModalidadViewDialog.hide()"/>
                 </h:panelGroup>

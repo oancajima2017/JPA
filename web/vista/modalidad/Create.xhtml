@@ -12,14 +12,17 @@
             <h:form id="ModalidadCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{modalidadController.selected != null}">
-                        <p:outputLabel value="#{vista.CreateModalidadLabel_codMod}" for="codMod" />
-                        <p:inputText id="codMod" value="#{modalidadController.selected.codMod}" title="#{vista.CreateModalidadTitle_codMod}" required="true" requiredMessage="#{vista.CreateModalidadRequiredMessage_codMod}"/>
-                        <p:outputLabel value="#{vista.CreateModalidadLabel_nomCarMod}" for="nomCarMod" />
-                        <p:inputText id="nomCarMod" value="#{modalidadController.selected.nomCarMod}" title="#{vista.CreateModalidadTitle_nomCarMod}" />
-                        <p:outputLabel value="#{vista.CreateModalidadLabel_monSuelMod}" for="monSuelMod" />
-                        <p:inputText id="monSuelMod" value="#{modalidadController.selected.monSuelMod}" title="#{vista.CreateModalidadTitle_monSuelMod}" />
-                        <p:outputLabel value="#{vista.CreateModalidadLabel_estMod}" for="estMod" />
-                        <p:inputText id="estMod" value="#{modalidadController.selected.estMod}" title="#{vista.CreateModalidadTitle_estMod}" />
+
+                        <p:outputLabel value="Cargo" for="nomCarMod" />
+                        <p:inputText id="nomCarMod" maxlength="50" value="#{modalidadController.selected.nomCarMod}" title="#{vista.CreateModalidadTitle_nomCarMod}" required="true" requiredMessage="INGRESA CARGO">
+                            <p:keyFilter regEx="/[a-zñÑáéíóú ]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="Sueldo" for="monSuelMod" />
+                        <p:inputText id="monSuelMod" maxlength="6" value="#{modalidadController.selected.monSuelMod}" title="#{vista.CreateModalidadTitle_monSuelMod}" required="true" requiredMessage="INGRESA SUELDO" >
+                            <p:keyFilter regEx="/[0-9 ]/i"/>    
+                        </p:inputText>
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{modalidadController.create}" value="#{vista.Save}" update="display,:ModalidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'ModalidadCreateDialog');"/>
                     <p:commandButton value="#{vista.Cancel}" onclick="ModalidadCreateDialog.hide()"/>

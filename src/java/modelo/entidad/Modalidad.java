@@ -13,10 +13,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,6 +47,9 @@ public class Modalidad implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "COD_MOD")
+//    GENERAR CODIGO AUTOINCREMENTADO
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MODALIDAD_SEQ")
+    @SequenceGenerator(sequenceName = "modalidad_seq", allocationSize = 1, name = "MODALIDAD_SEQ")
     private BigDecimal codMod;
     @Size(max = 50)
     @Column(name = "NOM_CAR_MOD")
@@ -52,7 +58,8 @@ public class Modalidad implements Serializable {
     private BigInteger monSuelMod;
     @Size(max = 2)
     @Column(name = "EST_MOD")
-    private String estMod;
+//    PREDEFIMIR UN VALOR POR DEFECTO
+    private String estMod = "A";
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "modalidadCodMod")
     private List<Personal> personalList;
 
@@ -128,5 +135,5 @@ public class Modalidad implements Serializable {
     public String toString() {
         return "modelo.entidad.Modalidad[ codMod=" + codMod + " ]";
     }
-    
+
 }
