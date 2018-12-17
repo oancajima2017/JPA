@@ -27,13 +27,8 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{vista.ListProductosTitle_codProd}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.codProd}"/>
-                        </p:column>
-                        <p:column>
+                        
+                        <p:column filterBy="#{item.nomProd}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{vista.ListProductosTitle_nomProd}"/>
                             </f:facet>
@@ -41,15 +36,15 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListProductosTitle_precProd}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.precProd}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{vista.ListProductosTitle_catgProd}"/>
                             </f:facet>
                             <h:outputText value="#{item.catgProd}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vista.ListProductosTitle_precProd}"/>
+                            </f:facet>
+                            <h:outputText value="S/ #{item.precProd}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

@@ -27,12 +27,21 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_codPer}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.codPer}"/>
-                        </p:column>
+                        <f:facet name="header">
+                            <div align="right">
+                                <p:commandButton value="Excel" ajax="false" icon="fa fa-file-excel-o" style="background: green;" class="text-white">
+                                    <p:dataExporter type="xls" target="datalist" fileName="Personal" />
+                                </p:commandButton>
+
+                                <p:commandButton value="PDF" ajax="false" icon="fa fa-file-pdf-o" style="background: red;" class="text-white">
+                                    <p:dataExporter type="pdf" target="datalist" fileName="Personal"/>
+                                </p:commandButton>
+
+                                <p:commandButton value="CSV" ajax="false" icon="fa fa-table" style="background: grey;" class="text-white">
+                                    <p:dataExporter type="csv" target="datalist" fileName="Personal" />
+                                </p:commandButton>
+                            </div>
+                        </f:facet>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{vista.ListPersonalTitle_nomPer}"/>
@@ -79,13 +88,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{vista.ListPersonalTitle_modalidadCodMod}"/>
                             </f:facet>
-                            <h:outputText value="#{item.modalidadCodMod}"/>
+                            <h:outputText value="#{item.modalidadCodMod.nomCarMod}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{vista.ListPersonalTitle_zonaCodZona}"/>
                             </f:facet>
-                            <h:outputText value="#{item.zonaCodZona}"/>
+                            <h:outputText value="#{item.zonaCodZona.nomZona}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{vista.Create}" actionListener="#{personalController.prepareCreate}" update=":PersonalCreateForm" oncomplete="PF('PersonalCreateDialog').show()"/>
