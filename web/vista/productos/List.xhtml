@@ -27,31 +27,35 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        
-                        <p:column filterBy="#{item.nomProd}" filterMatchMode="contains">
+
+                        <p:column filterBy="NombreProducto" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{vista.ListProductosTitle_nomProd}"/>
                             </f:facet>
                             <h:outputText value="#{item.nomProd}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListProductosTitle_catgProd}"/>
+                                <h:outputText value="Categoria"/>
                             </f:facet>
                             <h:outputText value="#{item.catgProd}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListProductosTitle_precProd}"/>
+                                <h:outputText value="Precio"/>
                             </f:facet>
                             <h:outputText value="S/ #{item.precProd}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListProductosTitle_estProd}"/>
+                                <h:outputText value="Estado"/>
                             </f:facet>
                             <h:outputText value="#{item.estProd}"/>
                         </p:column>
+
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{vista.Create}" actionListener="#{productosController.prepareCreate}" update=":ProductosCreateForm" oncomplete="PF('ProductosCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{vista.View}" update=":ProductosViewForm" oncomplete="PF('ProductosViewDialog').show()" disabled="#{empty productosController.selected}"/>

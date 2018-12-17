@@ -11,20 +11,28 @@
         <p:dialog id="ProductosCreateDlg" widgetVar="ProductosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreateProductosTitle}">
             <h:form id="ProductosCreateForm">
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{productosController.selected != null}">
-                        <p:outputLabel value="#{vista.CreateProductosLabel_codProd}" for="codProd" />
-                        <p:inputText id="codProd" value="#{productosController.selected.codProd}" title="#{vista.CreateProductosTitle_codProd}" required="true" requiredMessage="#{vista.CreateProductosRequiredMessage_codProd}"/>
+
                         <p:outputLabel value="#{vista.CreateProductosLabel_nomProd}" for="nomProd" />
-                        <p:inputText id="nomProd" value="#{productosController.selected.nomProd}" title="#{vista.CreateProductosTitle_nomProd}" />
+                        <p:inputText id="nomProd" maxlength="20" value="#{productosController.selected.nomProd}" title="#{vista.CreateProductosTitle_nomProd}" required="true" requiredMessage="INGRESA PRODUCTO"/>
+
                         <p:outputLabel value="#{vista.CreateProductosLabel_precProd}" for="precProd" />
-                        <p:inputText id="precProd" value="#{productosController.selected.precProd}" title="#{vista.CreateProductosTitle_precProd}" />
+                        <p:inputText id="precProd" maxlength="20" value="#{productosController.selected.precProd}" title="#{vista.CreateProductosTitle_precProd}" required="true" requiredMessage="INGRESA PRECIO" />
+
                         <p:outputLabel value="#{vista.CreateProductosLabel_catgProd}" for="catgProd" />
-                        <p:inputText id="catgProd" value="#{productosController.selected.catgProd}" title="#{vista.CreateProductosTitle_catgProd}" />
-                        <p:outputLabel value="#{vista.CreateProductosLabel_estProd}" for="estProd" />
-                        <p:inputText id="estProd" value="#{productosController.selected.estProd}" title="#{vista.CreateProductosTitle_estProd}" />
+                        <p:selectOneMenu id="catgProd" value="#{productosController.selected.catgProd}" title="#{vista.CreateProductosTitle_catgProd}">
+                            <f:selectItem itemLabel="Bebidas" itemValue="Bebidas"/>
+                            <f:selectItem itemLabel="Entrada" itemValue="Entrada"/>
+                            <f:selectItem itemLabel="Segundo" itemValue="Segundo"/>
+                            <f:selectItem itemLabel="Postre" itemValue="Postre"/>
+                        </p:selectOneMenu>
+
                     </p:panelGrid>
+
                     <p:commandButton actionListener="#{productosController.create}" value="#{vista.Save}" update="display,:ProductosListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductosCreateDialog');"/>
                     <p:commandButton value="#{vista.Cancel}" onclick="ProductosCreateDialog.hide()"/>
+
                 </h:panelGroup>
             </h:form>
         </p:dialog>

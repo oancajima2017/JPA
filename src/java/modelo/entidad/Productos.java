@@ -12,10 +12,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,6 +47,9 @@ public class Productos implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "COD_PROD")
+    //    GENERAR CODIGO AUTOINCREMENTADO
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTOS_SEQ")
+    @SequenceGenerator(sequenceName = "productos_seq", allocationSize = 1, name = "PRODUCTOS_SEQ")
     private BigDecimal codProd;
     @Size(max = 50)
     @Column(name = "NOM_PROD")
@@ -56,7 +62,7 @@ public class Productos implements Serializable {
     private String catgProd;
     @Size(max = 2)
     @Column(name = "EST_PROD")
-    private String estProd;
+    private String estProd = "A";
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productosCodProd")
     private List<Ventas> ventasList;
 
@@ -140,5 +146,5 @@ public class Productos implements Serializable {
     public String toString() {
         return "modelo.entidad.Productos[ codProd=" + codProd + " ]";
     }
-    
+
 }

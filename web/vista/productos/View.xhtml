@@ -11,17 +11,24 @@
         <p:dialog id="ProductosViewDlg" widgetVar="ProductosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewProductosTitle}">
             <h:form id="ProductosViewForm">
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{productosController.selected != null}">
-                        <h:outputText value="#{vista.ViewProductosLabel_codProd}"/>
+
+                        <h:outputText value="Orden"/>
                         <h:outputText value="#{productosController.selected.codProd}" title="#{vista.ViewProductosTitle_codProd}"/>
-                        <h:outputText value="#{vista.ViewProductosLabel_nomProd}"/>
+
+                        <h:outputText value="NombreProducto"/>
                         <h:outputText value="#{productosController.selected.nomProd}" title="#{vista.ViewProductosTitle_nomProd}"/>
-                        <h:outputText value="#{vista.ViewProductosLabel_precProd}"/>
+
+                        <h:outputText value="Precio"/>
                         <h:outputText value="#{productosController.selected.precProd}" title="#{vista.ViewProductosTitle_precProd}"/>
-                        <h:outputText value="#{vista.ViewProductosLabel_catgProd}"/>
+
+                        <h:outputText value="Categoria"/>
                         <h:outputText value="#{productosController.selected.catgProd}" title="#{vista.ViewProductosTitle_catgProd}"/>
-                        <h:outputText value="#{vista.ViewProductosLabel_estProd}"/>
+
+                        <h:outputText value="Estado"/>
                         <h:outputText value="#{productosController.selected.estProd}" title="#{vista.ViewProductosTitle_estProd}"/>
+
                     </p:panelGrid>
                     <p:commandButton value="#{vista.Close}" onclick="ProductosViewDialog.hide()"/>
                 </h:panelGroup>
