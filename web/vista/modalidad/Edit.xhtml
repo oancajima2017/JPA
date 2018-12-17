@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModalidadEditDlg" widgetVar="ModalidadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditModalidadTitle}">
+            <h:form id="ModalidadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{modalidadController.selected != null}">
+                        <p:outputLabel value="#{vista.EditModalidadLabel_codMod}" for="codMod" />
+                        <p:inputText id="codMod" value="#{modalidadController.selected.codMod}" title="#{vista.EditModalidadTitle_codMod}" required="true" requiredMessage="#{vista.EditModalidadRequiredMessage_codMod}"/>
+                        <p:outputLabel value="#{vista.EditModalidadLabel_nomCarMod}" for="nomCarMod" />
+                        <p:inputText id="nomCarMod" value="#{modalidadController.selected.nomCarMod}" title="#{vista.EditModalidadTitle_nomCarMod}" />
+                        <p:outputLabel value="#{vista.EditModalidadLabel_monSuelMod}" for="monSuelMod" />
+                        <p:inputText id="monSuelMod" value="#{modalidadController.selected.monSuelMod}" title="#{vista.EditModalidadTitle_monSuelMod}" />
+                        <p:outputLabel value="#{vista.EditModalidadLabel_estMod}" for="estMod" />
+                        <p:inputText id="estMod" value="#{modalidadController.selected.estMod}" title="#{vista.EditModalidadTitle_estMod}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modalidadController.update}" value="#{vista.Save}" update="display,:ModalidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ModalidadEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="ModalidadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

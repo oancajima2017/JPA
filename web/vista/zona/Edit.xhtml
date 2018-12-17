@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ZonaEditDlg" widgetVar="ZonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditZonaTitle}">
+            <h:form id="ZonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{zonaController.selected != null}">
+                        <p:outputLabel value="#{vista.EditZonaLabel_codZona}" for="codZona" />
+                        <p:inputText id="codZona" value="#{zonaController.selected.codZona}" title="#{vista.EditZonaTitle_codZona}" required="true" requiredMessage="#{vista.EditZonaRequiredMessage_codZona}"/>
+                        <p:outputLabel value="#{vista.EditZonaLabel_nomZona}" for="nomZona" />
+                        <p:inputText id="nomZona" value="#{zonaController.selected.nomZona}" title="#{vista.EditZonaTitle_nomZona}" />
+                        <p:outputLabel value="#{vista.EditZonaLabel_estZona}" for="estZona" />
+                        <p:inputText id="estZona" value="#{zonaController.selected.estZona}" title="#{vista.EditZonaTitle_estZona}" />
+                        <p:outputLabel value="#{vista.EditZonaLabel_cantMesaZona}" for="cantMesaZona" />
+                        <p:inputText id="cantMesaZona" value="#{zonaController.selected.cantMesaZona}" title="#{vista.EditZonaTitle_cantMesaZona}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{zonaController.update}" value="#{vista.Save}" update="display,:ZonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ZonaEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="ZonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

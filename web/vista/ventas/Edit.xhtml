@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VentasEditDlg" widgetVar="VentasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditVentasTitle}">
+            <h:form id="VentasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ventasController.selected != null}">
+                        <p:outputLabel value="#{vista.EditVentasLabel_codVenta}" for="codVenta" />
+                        <p:inputText id="codVenta" value="#{ventasController.selected.codVenta}" title="#{vista.EditVentasTitle_codVenta}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_codVenta}"/>
+                        <p:outputLabel value="#{vista.EditVentasLabel_cantVenta}" for="cantVenta" />
+                        <p:inputText id="cantVenta" value="#{ventasController.selected.cantVenta}" title="#{vista.EditVentasTitle_cantVenta}" />
+                        <p:outputLabel value="#{vista.EditVentasLabel_estVenta}" for="estVenta" />
+                        <p:inputText id="estVenta" value="#{ventasController.selected.estVenta}" title="#{vista.EditVentasTitle_estVenta}" />
+                        <p:outputLabel value="#{vista.EditVentasLabel_personalCodPer}" for="personalCodPer" />
+                        <p:selectOneMenu id="personalCodPer" value="#{ventasController.selected.personalCodPer}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_personalCodPer}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
+                                           var="personalCodPerItem"
+                                           itemValue="#{personalCodPerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.EditVentasLabel_productosCodProd}" for="productosCodProd" />
+                        <p:selectOneMenu id="productosCodProd" value="#{ventasController.selected.productosCodProd}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_productosCodProd}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{productosController.itemsAvailableSelectOne}"
+                                           var="productosCodProdItem"
+                                           itemValue="#{productosCodProdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ventasController.update}" value="#{vista.Save}" update="display,:VentasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'VentasEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="VentasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

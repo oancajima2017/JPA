@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalViewDlg" widgetVar="PersonalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewPersonalTitle}">
+            <h:form id="PersonalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+                        <h:outputText value="#{vista.ViewPersonalLabel_codPer}"/>
+                        <h:outputText value="#{personalController.selected.codPer}" title="#{vista.ViewPersonalTitle_codPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_nomPer}"/>
+                        <h:outputText value="#{personalController.selected.nomPer}" title="#{vista.ViewPersonalTitle_nomPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_apePer}"/>
+                        <h:outputText value="#{personalController.selected.apePer}" title="#{vista.ViewPersonalTitle_apePer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_dniPer}"/>
+                        <h:outputText value="#{personalController.selected.dniPer}" title="#{vista.ViewPersonalTitle_dniPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_sexPer}"/>
+                        <h:outputText value="#{personalController.selected.sexPer}" title="#{vista.ViewPersonalTitle_sexPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_estPer}"/>
+                        <h:outputText value="#{personalController.selected.estPer}" title="#{vista.ViewPersonalTitle_estPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_userPer}"/>
+                        <h:outputText value="#{personalController.selected.userPer}" title="#{vista.ViewPersonalTitle_userPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_passPer}"/>
+                        <h:outputText value="#{personalController.selected.passPer}" title="#{vista.ViewPersonalTitle_passPer}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_modalidadCodMod}"/>
+                        <h:outputText value="#{personalController.selected.modalidadCodMod}" title="#{vista.ViewPersonalTitle_modalidadCodMod}"/>
+                        <h:outputText value="#{vista.ViewPersonalLabel_zonaCodZona}"/>
+                        <h:outputText value="#{personalController.selected.zonaCodZona}" title="#{vista.ViewPersonalTitle_zonaCodZona}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vista.Close}" onclick="PersonalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalCreateDlg" widgetVar="PersonalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreatePersonalTitle}">
+            <h:form id="PersonalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_codPer}" for="codPer" />
+                        <p:inputText id="codPer" value="#{personalController.selected.codPer}" title="#{vista.CreatePersonalTitle_codPer}" required="true" requiredMessage="#{vista.CreatePersonalRequiredMessage_codPer}"/>
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_nomPer}" for="nomPer" />
+                        <p:inputText id="nomPer" value="#{personalController.selected.nomPer}" title="#{vista.CreatePersonalTitle_nomPer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_apePer}" for="apePer" />
+                        <p:inputText id="apePer" value="#{personalController.selected.apePer}" title="#{vista.CreatePersonalTitle_apePer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_dniPer}" for="dniPer" />
+                        <p:inputText id="dniPer" value="#{personalController.selected.dniPer}" title="#{vista.CreatePersonalTitle_dniPer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_sexPer}" for="sexPer" />
+                        <p:inputText id="sexPer" value="#{personalController.selected.sexPer}" title="#{vista.CreatePersonalTitle_sexPer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_estPer}" for="estPer" />
+                        <p:inputText id="estPer" value="#{personalController.selected.estPer}" title="#{vista.CreatePersonalTitle_estPer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_userPer}" for="userPer" />
+                        <p:inputText id="userPer" value="#{personalController.selected.userPer}" title="#{vista.CreatePersonalTitle_userPer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_passPer}" for="passPer" />
+                        <p:inputText id="passPer" value="#{personalController.selected.passPer}" title="#{vista.CreatePersonalTitle_passPer}" />
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_modalidadCodMod}" for="modalidadCodMod" />
+                        <p:selectOneMenu id="modalidadCodMod" value="#{personalController.selected.modalidadCodMod}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_modalidadCodMod}">
+                            <f:selectItems value="#{modalidadController.itemsAvailableSelectOne}"
+                                           var="modalidadCodModItem"
+                                           itemValue="#{modalidadCodModItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.CreatePersonalLabel_zonaCodZona}" for="zonaCodZona" />
+                        <p:selectOneMenu id="zonaCodZona" value="#{personalController.selected.zonaCodZona}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_zonaCodZona}">
+                            <f:selectItems value="#{zonaController.itemsAvailableSelectOne}"
+                                           var="zonaCodZonaItem"
+                                           itemValue="#{zonaCodZonaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personalController.create}" value="#{vista.Save}" update="display,:PersonalListForm:datalist,:growl" oncomplete="handleSubmit(args,'PersonalCreateDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="PersonalCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

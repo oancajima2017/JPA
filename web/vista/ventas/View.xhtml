@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VentasViewDlg" widgetVar="VentasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewVentasTitle}">
+            <h:form id="VentasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ventasController.selected != null}">
+                        <h:outputText value="#{vista.ViewVentasLabel_codVenta}"/>
+                        <h:outputText value="#{ventasController.selected.codVenta}" title="#{vista.ViewVentasTitle_codVenta}"/>
+                        <h:outputText value="#{vista.ViewVentasLabel_cantVenta}"/>
+                        <h:outputText value="#{ventasController.selected.cantVenta}" title="#{vista.ViewVentasTitle_cantVenta}"/>
+                        <h:outputText value="#{vista.ViewVentasLabel_estVenta}"/>
+                        <h:outputText value="#{ventasController.selected.estVenta}" title="#{vista.ViewVentasTitle_estVenta}"/>
+                        <h:outputText value="#{vista.ViewVentasLabel_personalCodPer}"/>
+                        <h:outputText value="#{ventasController.selected.personalCodPer}" title="#{vista.ViewVentasTitle_personalCodPer}"/>
+                        <h:outputText value="#{vista.ViewVentasLabel_productosCodProd}"/>
+                        <h:outputText value="#{ventasController.selected.productosCodProd}" title="#{vista.ViewVentasTitle_productosCodProd}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vista.Close}" onclick="VentasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

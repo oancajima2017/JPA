@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModalidadCreateDlg" widgetVar="ModalidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreateModalidadTitle}">
+            <h:form id="ModalidadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{modalidadController.selected != null}">
+                        <p:outputLabel value="#{vista.CreateModalidadLabel_codMod}" for="codMod" />
+                        <p:inputText id="codMod" value="#{modalidadController.selected.codMod}" title="#{vista.CreateModalidadTitle_codMod}" required="true" requiredMessage="#{vista.CreateModalidadRequiredMessage_codMod}"/>
+                        <p:outputLabel value="#{vista.CreateModalidadLabel_nomCarMod}" for="nomCarMod" />
+                        <p:inputText id="nomCarMod" value="#{modalidadController.selected.nomCarMod}" title="#{vista.CreateModalidadTitle_nomCarMod}" />
+                        <p:outputLabel value="#{vista.CreateModalidadLabel_monSuelMod}" for="monSuelMod" />
+                        <p:inputText id="monSuelMod" value="#{modalidadController.selected.monSuelMod}" title="#{vista.CreateModalidadTitle_monSuelMod}" />
+                        <p:outputLabel value="#{vista.CreateModalidadLabel_estMod}" for="estMod" />
+                        <p:inputText id="estMod" value="#{modalidadController.selected.estMod}" title="#{vista.CreateModalidadTitle_estMod}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modalidadController.create}" value="#{vista.Save}" update="display,:ModalidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'ModalidadCreateDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="ModalidadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

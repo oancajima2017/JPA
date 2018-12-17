@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalEditDlg" widgetVar="PersonalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditPersonalTitle}">
+            <h:form id="PersonalEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+                        <p:outputLabel value="#{vista.EditPersonalLabel_codPer}" for="codPer" />
+                        <p:inputText id="codPer" value="#{personalController.selected.codPer}" title="#{vista.EditPersonalTitle_codPer}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_codPer}"/>
+                        <p:outputLabel value="#{vista.EditPersonalLabel_nomPer}" for="nomPer" />
+                        <p:inputText id="nomPer" value="#{personalController.selected.nomPer}" title="#{vista.EditPersonalTitle_nomPer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_apePer}" for="apePer" />
+                        <p:inputText id="apePer" value="#{personalController.selected.apePer}" title="#{vista.EditPersonalTitle_apePer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_dniPer}" for="dniPer" />
+                        <p:inputText id="dniPer" value="#{personalController.selected.dniPer}" title="#{vista.EditPersonalTitle_dniPer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_sexPer}" for="sexPer" />
+                        <p:inputText id="sexPer" value="#{personalController.selected.sexPer}" title="#{vista.EditPersonalTitle_sexPer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_estPer}" for="estPer" />
+                        <p:inputText id="estPer" value="#{personalController.selected.estPer}" title="#{vista.EditPersonalTitle_estPer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_userPer}" for="userPer" />
+                        <p:inputText id="userPer" value="#{personalController.selected.userPer}" title="#{vista.EditPersonalTitle_userPer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_passPer}" for="passPer" />
+                        <p:inputText id="passPer" value="#{personalController.selected.passPer}" title="#{vista.EditPersonalTitle_passPer}" />
+                        <p:outputLabel value="#{vista.EditPersonalLabel_modalidadCodMod}" for="modalidadCodMod" />
+                        <p:selectOneMenu id="modalidadCodMod" value="#{personalController.selected.modalidadCodMod}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_modalidadCodMod}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{modalidadController.itemsAvailableSelectOne}"
+                                           var="modalidadCodModItem"
+                                           itemValue="#{modalidadCodModItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.EditPersonalLabel_zonaCodZona}" for="zonaCodZona" />
+                        <p:selectOneMenu id="zonaCodZona" value="#{personalController.selected.zonaCodZona}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_zonaCodZona}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{zonaController.itemsAvailableSelectOne}"
+                                           var="zonaCodZonaItem"
+                                           itemValue="#{zonaCodZonaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personalController.update}" value="#{vista.Save}" update="display,:PersonalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PersonalEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="PersonalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

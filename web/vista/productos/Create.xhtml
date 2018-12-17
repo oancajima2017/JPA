@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductosCreateDlg" widgetVar="ProductosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreateProductosTitle}">
+            <h:form id="ProductosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productosController.selected != null}">
+                        <p:outputLabel value="#{vista.CreateProductosLabel_codProd}" for="codProd" />
+                        <p:inputText id="codProd" value="#{productosController.selected.codProd}" title="#{vista.CreateProductosTitle_codProd}" required="true" requiredMessage="#{vista.CreateProductosRequiredMessage_codProd}"/>
+                        <p:outputLabel value="#{vista.CreateProductosLabel_nomProd}" for="nomProd" />
+                        <p:inputText id="nomProd" value="#{productosController.selected.nomProd}" title="#{vista.CreateProductosTitle_nomProd}" />
+                        <p:outputLabel value="#{vista.CreateProductosLabel_precProd}" for="precProd" />
+                        <p:inputText id="precProd" value="#{productosController.selected.precProd}" title="#{vista.CreateProductosTitle_precProd}" />
+                        <p:outputLabel value="#{vista.CreateProductosLabel_catgProd}" for="catgProd" />
+                        <p:inputText id="catgProd" value="#{productosController.selected.catgProd}" title="#{vista.CreateProductosTitle_catgProd}" />
+                        <p:outputLabel value="#{vista.CreateProductosLabel_estProd}" for="estProd" />
+                        <p:inputText id="estProd" value="#{productosController.selected.estProd}" title="#{vista.CreateProductosTitle_estProd}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productosController.create}" value="#{vista.Save}" update="display,:ProductosListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductosCreateDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="ProductosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
