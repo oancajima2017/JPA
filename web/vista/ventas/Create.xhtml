@@ -12,24 +12,28 @@
             <h:form id="VentasCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ventasController.selected != null}">
-                        <p:outputLabel value="#{vista.CreateVentasLabel_codVenta}" for="codVenta" />
-                        <p:inputText id="codVenta" value="#{ventasController.selected.codVenta}" title="#{vista.CreateVentasTitle_codVenta}" required="true" requiredMessage="#{vista.CreateVentasRequiredMessage_codVenta}"/>
-                        <p:outputLabel value="#{vista.CreateVentasLabel_cantVenta}" for="cantVenta" />
-                        <p:inputText id="cantVenta" value="#{ventasController.selected.cantVenta}" title="#{vista.CreateVentasTitle_cantVenta}" />
-                        <p:outputLabel value="#{vista.CreateVentasLabel_estVenta}" for="estVenta" />
-                        <p:inputText id="estVenta" value="#{ventasController.selected.estVenta}" title="#{vista.CreateVentasTitle_estVenta}" />
-                        <p:outputLabel value="#{vista.CreateVentasLabel_personalCodPer}" for="personalCodPer" />
-                        <p:selectOneMenu id="personalCodPer" value="#{ventasController.selected.personalCodPer}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_personalCodPer}">
-                            <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
-                                           var="personalCodPerItem"
-                                           itemValue="#{personalCodPerItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{vista.CreateVentasLabel_productosCodProd}" for="productosCodProd" />
+
+                        <p:outputLabel value="Producto" for="productosCodProd" />
                         <p:selectOneMenu id="productosCodProd" value="#{ventasController.selected.productosCodProd}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_productosCodProd}">
                             <f:selectItems value="#{productosController.itemsAvailableSelectOne}"
                                            var="productosCodProdItem"
+                                           itemLabel="#{productosCodProdItem.nomProd}"
                                            itemValue="#{productosCodProdItem}"/>
                         </p:selectOneMenu>
+
+                        <p:outputLabel value="Cantidad" for="cantVenta" />
+                        <p:inputText id="cantVenta" maxlength="5" value="#{ventasController.selected.cantVenta}" title="#{vista.CreateVentasTitle_cantVenta}" required="true" requiredMessage="INGRESA CANTIDAD">
+                            <p:keyFilter regEx="/[0-9]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="Personal" for="personalCodPer" />
+                        <p:selectOneMenu id="personalCodPer" value="#{ventasController.selected.personalCodPer}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_personalCodPer}">
+                            <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
+                                           var="personalCodPerItem"
+                                           itemLabel="#{personalCodPerItem.nomPer}"
+                                           itemValue="#{personalCodPerItem}"/>
+                        </p:selectOneMenu>
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{ventasController.create}" value="#{vista.Save}" update="display,:VentasListForm:datalist,:growl" oncomplete="handleSubmit(args,'VentasCreateDialog');"/>
                     <p:commandButton value="#{vista.Cancel}" onclick="VentasCreateDialog.hide()"/>

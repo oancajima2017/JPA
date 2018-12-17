@@ -10,18 +10,26 @@
 
         <p:dialog id="VentasViewDlg" widgetVar="VentasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewVentasTitle}">
             <h:form id="VentasViewForm">
+
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{ventasController.selected != null}">
-                        <h:outputText value="#{vista.ViewVentasLabel_codVenta}"/>
+
+                        <h:outputText value="Orden"/>
                         <h:outputText value="#{ventasController.selected.codVenta}" title="#{vista.ViewVentasTitle_codVenta}"/>
-                        <h:outputText value="#{vista.ViewVentasLabel_cantVenta}"/>
+
+                        <h:outputText value="Producto"/>
+                        <h:outputText value="#{ventasController.selected.productosCodProd.nomProd}" title="#{vista.ViewVentasTitle_productosCodProd}"/>
+
+                        <h:outputText value="Cantidad"/>
                         <h:outputText value="#{ventasController.selected.cantVenta}" title="#{vista.ViewVentasTitle_cantVenta}"/>
-                        <h:outputText value="#{vista.ViewVentasLabel_estVenta}"/>
+
+                        <h:outputText value="Personal"/>
+                        <h:outputText value="#{ventasController.selected.personalCodPer.nomPer}" title="#{vista.ViewVentasTitle_personalCodPer}"/>
+
+                        <h:outputText value="Estado"/>
                         <h:outputText value="#{ventasController.selected.estVenta}" title="#{vista.ViewVentasTitle_estVenta}"/>
-                        <h:outputText value="#{vista.ViewVentasLabel_personalCodPer}"/>
-                        <h:outputText value="#{ventasController.selected.personalCodPer}" title="#{vista.ViewVentasTitle_personalCodPer}"/>
-                        <h:outputText value="#{vista.ViewVentasLabel_productosCodProd}"/>
-                        <h:outputText value="#{ventasController.selected.productosCodProd}" title="#{vista.ViewVentasTitle_productosCodProd}"/>
+
                     </p:panelGrid>
                     <p:commandButton value="#{vista.Close}" onclick="VentasViewDialog.hide()"/>
                 </h:panelGroup>

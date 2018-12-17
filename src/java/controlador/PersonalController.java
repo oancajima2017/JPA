@@ -36,7 +36,7 @@ public class PersonalController implements Serializable {
             FacesContext contex = FacesContext.getCurrentInstance();
             selected = ejbFacade.validarUsuario(selected);
             if (selected != null) {
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", selected  );
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", selected);
                 contex.getExternalContext().redirect("faces/vista/ventas/List.xhtml");
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("usuario o contraseña incorrecta"));

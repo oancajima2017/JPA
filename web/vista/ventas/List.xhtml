@@ -26,6 +26,7 @@
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
                         <f:facet name="header">
                             <div align="right">
                                 <p:commandButton value="Excel" ajax="false" icon="fa fa-file-excel-o" style="background: green;" class="text-white">
@@ -44,28 +45,32 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListVentasTitle_personalCodPer}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personalCodPer.apePer}, #{item.personalCodPer.nomPer}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{vista.ListVentasTitle_productosCodProd}"/>
+                                <h:outputText value="Producto"/>
                             </f:facet>
                             <h:outputText value="#{item.productosCodProd.nomProd}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListVentasTitle_cantVenta}"/>
+                                <h:outputText value="Cantidad"/>
                             </f:facet>
                             <h:outputText value="#{item.cantVenta}"/>
                         </p:column>
+
+                        <p:column>                              
+                            <f:facet name="header">
+                                <h:outputText value="Personal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalCodPer.apePer}, #{item.personalCodPer.nomPer}"/>
+                        </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListVentasTitle_estVenta}"/>
+                                <h:outputText value="Estado"/>
                             </f:facet>
                             <h:outputText value="#{item.estVenta}"/>
                         </p:column>
+
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{vista.Create}" actionListener="#{ventasController.prepareCreate}" update=":VentasCreateForm" oncomplete="PF('VentasCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{vista.View}" update=":VentasViewForm" oncomplete="PF('VentasViewDialog').show()" disabled="#{empty ventasController.selected}"/>
