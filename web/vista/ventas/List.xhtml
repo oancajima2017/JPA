@@ -44,12 +44,6 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListVentasTitle_cantVenta}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cantVenta}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{vista.ListVentasTitle_personalCodPer}"/>
                             </f:facet>
                             <h:outputText value="#{item.personalCodPer.apePer}, #{item.personalCodPer.nomPer}"/>
@@ -59,6 +53,12 @@
                                 <h:outputText value="#{vista.ListVentasTitle_productosCodProd}"/>
                             </f:facet>
                             <h:outputText value="#{item.productosCodProd.nomProd}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vista.ListVentasTitle_cantVenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantVenta}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

@@ -31,12 +31,12 @@ public class PersonalController implements Serializable {
     private Personal selected = new Personal();
     private String user, pass;
 
-    public String iniciarSesion() throws Exception {
+    public void iniciarSesion() throws Exception {
         try {
             FacesContext contex = FacesContext.getCurrentInstance();
-            Personal u = ejbFacade.validarUsuario(selected);
-            if (u != null) {
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
+            selected = ejbFacade.validarUsuario(selected);
+            if (selected != null) {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", selected  );
                 contex.getExternalContext().redirect("faces/vista/ventas/List.xhtml");
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("usuario o contraseña incorrecta"));
@@ -44,7 +44,6 @@ public class PersonalController implements Serializable {
         } catch (IOException e) {
             throw e;
         }
-        return null;
     }
 
     public void cerrarSesion() throws IOException {

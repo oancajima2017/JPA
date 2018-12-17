@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <h:link class="navbar-brand" outcome="/vista/ventas/List.xhtml">
                     <img src="http://pluspng.com/img-png/beer-mug-cheers-png-alcohol-beer-beer-mug-cheers-ele-glass-toast-icon-512.png" width="30" height="30" class="d-inline-block align-top" alt=""/>
-                        SisBar
+                    SisBar
                 </h:link>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
@@ -54,7 +54,7 @@
                                 #{personalController.selected.userPer}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">Perfil</a>
+                                <a onclick="PF('perfilDlg').show()" class="dropdown-item" style="cursor: pointer">Perfil</a>
                                 <div class="dropdown-divider"></div>
                                 <h:commandLink class="dropdown-item" value="Cerrar sesión" actionListener="#{personalController.cerrarSesion()}"/>
                             </div>
@@ -63,6 +63,31 @@
                 </h:form>
             </div>
         </nav>
+        <p:dialog id="perfilDialog"
+                  widgetVar="perfilDlg"
+                  appendTo="@(body)"
+                  modal="true"
+                  closeOnEscape="true">
+            <f:facet name="header">
+                <i class="fa fa-user" style="margin-right: 15px;"></i>Datos del usuario
+            </f:facet>
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="3">
+                    <p:outputLabel value="Nombres: " class="font-weight-bold"/>
+                    <p:outputLabel value="#{personalController.selected.nomPer}"/>
+
+                    <p:outputLabel value="Apellidos: " class="font-weight-bold"/>
+                    <p:outputLabel value="#{personalController.selected.apePer}"/>
+
+                    <p:outputLabel value="DNI: " class="font-weight-bold"/>
+                    <p:outputLabel value="#{personalController.selected.dniPer}"/>
+
+                    <p:outputLabel value="Cargo: " class="font-weight-bold"/>
+                    <p:outputLabel value="#{personalController.selected.modalidadCodMod.nomCarMod}"/>
+                </h:panelGrid>
+            </h:form>
+
+        </p:dialog>
 
 
         <div class="container-fluid">
@@ -72,6 +97,9 @@
         <style>
             body {
                 padding-top: 80px;
+            }
+            .ui-growl {
+                z-index: 9999 !important;
             }
         </style>
 

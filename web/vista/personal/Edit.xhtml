@@ -12,8 +12,6 @@
             <h:form id="PersonalEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
-                        <p:outputLabel value="#{vista.EditPersonalLabel_codPer}" for="codPer" />
-                        <p:inputText id="codPer" value="#{personalController.selected.codPer}" title="#{vista.EditPersonalTitle_codPer}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_codPer}"/>
                         <p:outputLabel value="#{vista.EditPersonalLabel_nomPer}" for="nomPer" />
                         <p:inputText id="nomPer" value="#{personalController.selected.nomPer}" title="#{vista.EditPersonalTitle_nomPer}" />
                         <p:outputLabel value="#{vista.EditPersonalLabel_apePer}" for="apePer" />
@@ -33,6 +31,7 @@
                             <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
                             <f:selectItems value="#{modalidadController.itemsAvailableSelectOne}"
                                            var="modalidadCodModItem"
+                                           itemLabel="#{modalidadCodModItem.nomCarMod}"
                                            itemValue="#{modalidadCodModItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{vista.EditPersonalLabel_zonaCodZona}" for="zonaCodZona" />
@@ -40,6 +39,7 @@
                             <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
                             <f:selectItems value="#{zonaController.itemsAvailableSelectOne}"
                                            var="zonaCodZonaItem"
+                                           itemLabel="#{zonaCodZonaItem.nomZona}"
                                            itemValue="#{zonaCodZonaItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

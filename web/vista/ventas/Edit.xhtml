@@ -12,8 +12,6 @@
             <h:form id="VentasEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ventasController.selected != null}">
-                        <p:outputLabel value="#{vista.EditVentasLabel_codVenta}" for="codVenta" />
-                        <p:inputText id="codVenta" value="#{ventasController.selected.codVenta}" title="#{vista.EditVentasTitle_codVenta}" required="true" requiredMessage="#{vista.EditVentasRequiredMessage_codVenta}"/>
                         <p:outputLabel value="#{vista.EditVentasLabel_cantVenta}" for="cantVenta" />
                         <p:inputText id="cantVenta" value="#{ventasController.selected.cantVenta}" title="#{vista.EditVentasTitle_cantVenta}" />
                         <p:outputLabel value="#{vista.EditVentasLabel_estVenta}" for="estVenta" />
@@ -23,6 +21,7 @@
                             <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
                             <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
                                            var="personalCodPerItem"
+                                           itemLabel="#{personalCodPerItem.apePer}, #{personalCodPerItem.nomPer}"
                                            itemValue="#{personalCodPerItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{vista.EditVentasLabel_productosCodProd}" for="productosCodProd" />
@@ -30,6 +29,7 @@
                             <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
                             <f:selectItems value="#{productosController.itemsAvailableSelectOne}"
                                            var="productosCodProdItem"
+                                           itemLabel="#{productosCodProdItem.nomProd}"
                                            itemValue="#{productosCodProdItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
