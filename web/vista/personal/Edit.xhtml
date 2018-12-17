@@ -12,36 +12,51 @@
             <h:form id="PersonalEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
-                        <p:outputLabel value="#{vista.EditPersonalLabel_nomPer}" for="nomPer" />
-                        <p:inputText id="nomPer" value="#{personalController.selected.nomPer}" title="#{vista.EditPersonalTitle_nomPer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_apePer}" for="apePer" />
-                        <p:inputText id="apePer" value="#{personalController.selected.apePer}" title="#{vista.EditPersonalTitle_apePer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_dniPer}" for="dniPer" />
-                        <p:inputText id="dniPer" value="#{personalController.selected.dniPer}" title="#{vista.EditPersonalTitle_dniPer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_sexPer}" for="sexPer" />
-                        <p:inputText id="sexPer" value="#{personalController.selected.sexPer}" title="#{vista.EditPersonalTitle_sexPer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_estPer}" for="estPer" />
-                        <p:inputText id="estPer" value="#{personalController.selected.estPer}" title="#{vista.EditPersonalTitle_estPer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_userPer}" for="userPer" />
-                        <p:inputText id="userPer" value="#{personalController.selected.userPer}" title="#{vista.EditPersonalTitle_userPer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_passPer}" for="passPer" />
-                        <p:inputText id="passPer" value="#{personalController.selected.passPer}" title="#{vista.EditPersonalTitle_passPer}" />
-                        <p:outputLabel value="#{vista.EditPersonalLabel_modalidadCodMod}" for="modalidadCodMod" />
+
+                        <p:outputLabel value="Nombres" for="nomPer" />
+                        <p:inputText id="nomPer" maxlength="50" value="#{personalController.selected.nomPer}" title="#{vista.CreatePersonalTitle_nomPer}" required="true" requiredMessage="INGRESA NOMBRES">
+                            <p:keyFilter regEx="/[a-zñÑáéíóú ]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="Apellidos" for="apePer" />
+                        <p:inputText id="apePer" maxlength="50" value="#{personalController.selected.apePer}" title="#{vista.CreatePersonalTitle_apePer}" required="true" requiredMessage="INGRESA APELLIDOS">
+                            <p:keyFilter regEx="/[a-zñÑáéíóú ]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="DNI" for="dniPer" />
+                        <p:inputText id="dniPer" maxlength="8" value="#{personalController.selected.dniPer}" title="#{vista.CreatePersonalTitle_dniPer}" required="true" requiredMessage="INGRESA DNI" >
+                            <p:keyFilter regEx="/[0-9]/i"/>
+                        </p:inputText>
+
+                        <p:outputLabel value="Sexo" for="sexPer" />
+                        <p:selectOneMenu id="sexPer" value="#{personalController.selected.sexPer}" title="#{vista.CreatePersonalTitle_sexPer}" placeholder="Sexo">
+                            <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                            <f:selectItem itemLabel="Femenino" itemValue="F"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Usuario" for="userPer" />
+                        <p:inputText id="userPer" maxlength="12" value="#{personalController.selected.userPer}" title="#{vista.CreatePersonalTitle_userPer}" required="true" requiredMessage="INGRESA USUARIO" />
+
+                        <p:outputLabel value="Contraseña" for="passPer" />
+                        <p:password id="passPer" maxlength="12" value="#{personalController.selected.passPer}"  required="true" requiredMessage="INGRESA CONTRASEÑA" title="#{vista.CreatePersonalTitle_passPer}">
+                        </p:password>
+
+                        <p:outputLabel value="Cargo" for="modalidadCodMod" />
                         <p:selectOneMenu id="modalidadCodMod" value="#{personalController.selected.modalidadCodMod}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_modalidadCodMod}">
-                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
                             <f:selectItems value="#{modalidadController.itemsAvailableSelectOne}"
                                            var="modalidadCodModItem"
                                            itemLabel="#{modalidadCodModItem.nomCarMod}"
-                                           itemValue="#{modalidadCodModItem}"/>
+                                           itemValue="#{modalidadCodModItem}"/>                            
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{vista.EditPersonalLabel_zonaCodZona}" for="zonaCodZona" />
+
+                        <p:outputLabel value="Zona" for="zonaCodZona" />
                         <p:selectOneMenu id="zonaCodZona" value="#{personalController.selected.zonaCodZona}" required="true" requiredMessage="#{vista.EditPersonalRequiredMessage_zonaCodZona}">
-                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
                             <f:selectItems value="#{zonaController.itemsAvailableSelectOne}"
                                            var="zonaCodZonaItem"
                                            itemLabel="#{zonaCodZonaItem.nomZona}"
                                            itemValue="#{zonaCodZonaItem}"/>
                         </p:selectOneMenu>
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{personalController.update}" value="#{vista.Save}" update="display,:PersonalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PersonalEditDialog');"/>
                     <p:commandButton value="#{vista.Cancel}" onclick="PersonalEditDialog.hide()"/>

@@ -11,29 +11,43 @@
         <p:dialog id="PersonalViewDlg" widgetVar="PersonalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewPersonalTitle}">
             <h:form id="PersonalViewForm">
                 <h:panelGroup id="display">
+
                     <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
-                        <h:outputText value="#{vista.ViewPersonalLabel_codPer}"/>
+
+                        <h:outputText value="Orden"/>
                         <h:outputText value="#{personalController.selected.codPer}" title="#{vista.ViewPersonalTitle_codPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_nomPer}"/>
+
+                        <h:outputText value="Nombres"/>
                         <h:outputText value="#{personalController.selected.nomPer}" title="#{vista.ViewPersonalTitle_nomPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_apePer}"/>
+
+                        <h:outputText value="Apellidos"/>
                         <h:outputText value="#{personalController.selected.apePer}" title="#{vista.ViewPersonalTitle_apePer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_dniPer}"/>
+
+                        <h:outputText value="DNI"/>
                         <h:outputText value="#{personalController.selected.dniPer}" title="#{vista.ViewPersonalTitle_dniPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_sexPer}"/>
+
+                        <h:outputText value="Sexo"/>
                         <h:outputText value="#{personalController.selected.sexPer}" title="#{vista.ViewPersonalTitle_sexPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_estPer}"/>
-                        <h:outputText value="#{personalController.selected.estPer}" title="#{vista.ViewPersonalTitle_estPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_userPer}"/>
+
+                        <h:outputText value="Usuario"/>
                         <h:outputText value="#{personalController.selected.userPer}" title="#{vista.ViewPersonalTitle_userPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_passPer}"/>
+
+                        <h:outputText value="Contraseña"/>
                         <h:outputText value="#{personalController.selected.passPer}" title="#{vista.ViewPersonalTitle_passPer}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_modalidadCodMod}"/>
-                        <h:outputText value="#{personalController.selected.modalidadCodMod}" title="#{vista.ViewPersonalTitle_modalidadCodMod}"/>
-                        <h:outputText value="#{vista.ViewPersonalLabel_zonaCodZona}"/>
-                        <h:outputText value="#{personalController.selected.zonaCodZona}" title="#{vista.ViewPersonalTitle_zonaCodZona}"/>
+
+                        <h:outputText value="Cargo"/>
+                        <h:outputText value="#{personalController.selected.modalidadCodMod.nomCarMod}" title="#{vista.ViewPersonalTitle_modalidadCodMod}"/>
+
+                        <h:outputText value="Zona"/>
+                        <h:outputText value="#{personalController.selected.zonaCodZona.nomZona}" title="#{vista.ViewPersonalTitle_zonaCodZona}"/>
+
+                        <h:outputText value="Estado"/>
+                        <h:outputText value="#{personalController.selected.estPer}" title="#{vista.ViewPersonalTitle_estPer}"/>
+
                     </p:panelGrid>
+
                     <p:commandButton value="#{vista.Close}" onclick="PersonalViewDialog.hide()"/>
+
                 </h:panelGroup>
             </h:form>
         </p:dialog>

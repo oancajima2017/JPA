@@ -29,6 +29,7 @@
 
                         <f:facet name="header">
                             <div align="right">
+
                                 <p:commandButton value="Excel" ajax="false" icon="fa fa-file-excel-o" style="background: green;" class="text-white">
                                     <p:dataExporter type="xls" target="datalist" fileName="Personal" />
                                 </p:commandButton>
@@ -42,60 +43,63 @@
                                 </p:commandButton>
                             </div>
                         </f:facet>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_nomPer}"/>
+                                <h:outputText value="Nombres"/>
                             </f:facet>
                             <h:outputText value="#{item.nomPer}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_apePer}"/>
+                                <h:outputText value="Apellidos"/>
                             </f:facet>
                             <h:outputText value="#{item.apePer}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_dniPer}"/>
+                                <h:outputText value="DNI"/>
                             </f:facet>
                             <h:outputText value="#{item.dniPer}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_sexPer}"/>
+                                <h:outputText value="Sexo"/>
                             </f:facet>
                             <h:outputText value="#{item.sexPer}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_estPer}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estPer}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_userPer}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userPer}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_passPer}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.passPer}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_modalidadCodMod}"/>
+                                <h:outputText value="Cargo"/>
                             </f:facet>
                             <h:outputText value="#{item.modalidadCodMod.nomCarMod}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{vista.ListPersonalTitle_zonaCodZona}"/>
+                                <h:outputText value="Zona"/>
                             </f:facet>
                             <h:outputText value="#{item.zonaCodZona.nomZona}"/>
                         </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Usuario"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userPer}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Estado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estPer}"/>
+                        </p:column>
+
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{vista.Create}" actionListener="#{personalController.prepareCreate}" update=":PersonalCreateForm" oncomplete="PF('PersonalCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{vista.View}" update=":PersonalViewForm" oncomplete="PF('PersonalViewDialog').show()" disabled="#{empty personalController.selected}"/>

@@ -12,12 +12,15 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -49,6 +52,9 @@ public class Personal implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "COD_PER")
+//    GENERAR CODIGO AUTOINCREMENTADO
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSONAL_SEQ")
+    @SequenceGenerator(sequenceName = "personal_seq", allocationSize = 1, name = "PERSONAL_SEQ")
     private BigDecimal codPer;
     @Size(max = 50)
     @Column(name = "NOM_PER")
@@ -64,7 +70,7 @@ public class Personal implements Serializable {
     private String sexPer;
     @Size(max = 2)
     @Column(name = "EST_PER")
-    private String estPer;
+    private String estPer = "A";
     @Size(max = 50)
     @Column(name = "USER_PER")
     private String userPer;
@@ -200,5 +206,5 @@ public class Personal implements Serializable {
     public String toString() {
         return "modelo.entidad.Personal[ codPer=" + codPer + " ]";
     }
-    
+
 }
